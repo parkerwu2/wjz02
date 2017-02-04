@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/10/25.
@@ -23,10 +25,11 @@ public class BF {
         return numbers.get(i++);
     }
     public static void main(String[] args) {
-        BF bf = new BF();
-        for (int i = 0; i < 10; i++) {
-            BFThread bfThread = new BFThread(bf);
-            bfThread.run();
-        }
+        Long a = 152l;
+        Long b = 152l;
+        Map<Long, String> map = new HashMap<>();
+        map.put(a, "1");
+        map.put(b, "2");
+        System.out.println(map.size());
     }
 }

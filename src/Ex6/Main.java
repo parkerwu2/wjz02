@@ -1,11 +1,23 @@
-import java.util.*;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.locks.ReentrantLock;
-class A {
+package Ex6;
 
-}
+/**
+ * Created by Administrator on 2017/2/5.
+ */
+//求一个java程序（数塔问题）
+//        、数塔问题(tower.pas)
+//        设有一个三角形的数塔,如下图所示.顶点结点称为根结点,每个结点有一个整数数值.从顶点出发,在每一结点可以选择向左走或是向右走,一起走到底层,要求找出一条路径,使路径上的值最大.
+//        【样例输入】tower.in
+//        5 {数塔层数}
+//        13
+//        11 8
+//        12 7 26
+//        6 14 15 8
+//        12 7 13 24 11
+//        【样例输出】tower.out
+//        max=86
+
+    // 状态转移方程 f[i][j] = max(f[i-1][j], f[i-1][j+1]) + m[i][j];
 public class Main {
-
     public static void main(String[] args) {
         int[][] m = new int[5][5];
         int[][] f = new int[5][5];

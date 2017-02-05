@@ -12,6 +12,18 @@ public class Main {
     public static void main(String[] args) {
         int a[] = {1, -2, 3, 10, -4, 7, 2, -5};
         find(a);
+        System.out.println(getMaxSubArray2(a));
+    }
+    //公式递推
+    public static int getMaxSubArray2(int a[]){
+        int[] dp = new int[a.length];
+        dp[0] = a[0];
+        int answer = dp[0];
+        for(int i=1; i< a.length; i++){
+            dp[i] = Math.max(dp[i-1]+a[i], a[i]);
+            answer = Math.max(answer, dp[i]);
+        }
+        return answer;
     }
     private static void find(int[] a) {
         int currentSum = 0;

@@ -1,48 +1,65 @@
-import Ex5.T;
-
+import java.math.BigDecimal;
 import java.util.*;
-import java.util.concurrent.*;
-class MyQueue<T> extends LinkedBlockingQueue<T> {
-    public MyQueue() {}
-    @Override
-    public boolean add(T t) {
-        return offer(t);
-    }
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
-    @Override
-    public boolean offer(T t) {
-        try {
-            System.out.println("i am put into the queue" + t.toString());
-            put(t);
-        } catch(InterruptedException e) {
-            return false;
-        }
-        return true;
-    }
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
 }
 
-class A extends Thread {
-    public A(String name) {
-        super(name);
-    }
-    @Override
-    public void run() {
-        System.out.println(Thread.currentThread().getName() + " i run " + new Date());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
 public class Main {
+    private int diff(int a, int b) {
+        String l = Integer.toBinaryString(a);
+        String r = Integer.toBinaryString(b);
+        if (l.length() < 4) {
+            while (l.length() != 4) {
+                l = "0" + l;
+            }
+        }
+        if (r.length() < 4) {
+            while (r.length() != 4) {
+                r = "0" + r;
+            }
+        }
+        String l1 = "";
+        String r1 = "";
+        if (l.length() > 4) {
+            l1 = l.substring(l.length() - 4);
+        } else {
+            l1 = l;
+        }
+        if (r.length() > 4) {
+            r1 = r.substring(r.length() - 4);
+        } else {
+            r1 = r;
+        }
+        int d = 0;
+        for (int i = 0; i < 4; i++) {
+            if (l1.charAt(i) != r1.charAt(i)) {
+                d++;
+            }
+        }
+        return d;
+    }
+    public int totalHammingDistance(int[] nums) {
+        int len = nums.length;
+        int sum = 0;
+        for (int i = 0; i < len; i++) {
+            for (int j = i + 1; j < len; j++) {
+                    sum += diff(nums[i], nums[j]);
+            }
+        }
+        return sum;
+    }
+    public static void A() {
+    }
+
 
     public static void main(String[] args) {
-        ThreadPoolExecutor pool = new ThreadPoolExecutor(1, 2, 0L,
-                TimeUnit.SECONDS,
-                new MyQueue<Runnable>());
-        pool.execute(new A("1"));
-        pool.execute(new A("2"));
-        pool.execute(new A("3"));
+//        int r = new Main().totalHammingDistance(new int[]{1337, 7331});
+//        System.out.println(r);
+            AtomicInteger
     }
 }

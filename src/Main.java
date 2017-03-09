@@ -60,6 +60,5 @@ public class Main {
     public static void main(String[] args) {
 //        int r = new Main().totalHammingDistance(new int[]{1337, 7331});
 //        System.out.println(r);
-            AtomicInteger
     }
 }

@@ -1,6 +1,9 @@
 package Ex16;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 class Step {
     public volatile int value = 1;
@@ -62,6 +65,8 @@ class B extends Thread {
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        Map<Integer, Integer> m = new ConcurrentHashMap<>();
+        m.put(1, 1);
         Step s = new Step();
         new A(s).start();
         new B(s).start();
